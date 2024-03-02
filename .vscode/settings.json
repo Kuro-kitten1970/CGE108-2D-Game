@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "CGE108 2D Game.sln"
+    "dotnet.defaultSolution": "CGE108-2D-Game.sln"
 }

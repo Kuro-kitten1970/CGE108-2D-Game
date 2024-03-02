@@ -3,15 +3,21 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Box
+  - MysteryBox
+  - Coin
+  - Enemy
+  - Stump
+  - UnbreakBox
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 
@@ -40,4 +46,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2926709041
+    locked: 0
+  - name: Midground
+    uniqueID: 1450252061
+    locked: 0
+  - name: Foreground
+    uniqueID: 2505572123
     locked: 0
