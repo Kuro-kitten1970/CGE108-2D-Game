@@ -3693,7 +3693,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9181182189542524320, guid: 1f807361a9c93a242a0dc02b9a53ccad, type: 3}
       propertyPath: _targetDistance.x
-      value: -8
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 9181182189542524320, guid: 1f807361a9c93a242a0dc02b9a53ccad, type: 3}
       propertyPath: _targetDistance.y
