@@ -4,6 +4,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Character Properties")]
     [SerializeField] private float _walkSpeed = 3f;
+    [SerializeField] private float _flySpeed = 2f;
     [SerializeField] private float _jumpForce = 5f;
 
     [Header("Other Properties")]
@@ -36,7 +37,9 @@ public class PlayerController : MonoBehaviour
 
     private void MoveHandler()
     {
-        float x = Input.GetAxis("Horizontal") * _walkSpeed;
+        float x = Input.GetAxis("Horizontal");
+
+        x *= _groundChecker.isGrounded ? _walkSpeed : _flySpeed;
 
         _spriteRenderer.flipX = x < 0 || (x <= 0 && _spriteRenderer.flipX);
 

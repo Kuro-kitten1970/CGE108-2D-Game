@@ -7,6 +7,7 @@ public class ObjectsTranform : MonoBehaviour
 
     private Vector3 _originTranform;
     private Vector3 _targetTranform;
+    public float GetXDirection { get { return _targetDistance.x; } } 
 
     public bool _isGoingOpposite;
     public bool _isStop = false;

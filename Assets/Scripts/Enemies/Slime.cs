@@ -6,6 +6,7 @@ public class Slime : EnemyBehavior
     private Animator _animator;
     private Rigidbody2D _slime;
     private ObjectsTranform _tranform;
+    private ScoreDisplay _display;
 
     private void Awake()
     {
@@ -13,23 +14,37 @@ public class Slime : EnemyBehavior
         _animator = gameObject.GetComponent<Animator>();
         _slime = gameObject.GetComponent<Rigidbody2D>();
         _tranform = GetComponent<ObjectsTranform>();
+        _display = FindAnyObjectByType<ScoreDisplay>();
     }
 
     private void Update()
     {
-        _sprite.flipX =! _tranform._isGoingOpposite;
+        if (_tranform.GetXDirection < 0)
+        {
+            _sprite.flipX = _tranform._isGoingOpposite;
+        }
+        else
+        {
+            _sprite.flipX =! _tranform._isGoingOpposite;
+        }
     }
 
     public bool CheckPlayerHit(Collision2D collision, Rigidbody2D rigidbody)
     {
         ContactPoint2D contact = collision.GetContact(0);
 
-        Debug.Log(Vector2.Dot(contact.normal, Vector2.up));
-        if (Vector2.Dot(contact.normal, Vector2.up) >= 0.9f && rigidbody.gameObject.CompareTag("Player"))
+        if (Vector2.Dot(contact.normal, Vector2.up) >= 0.875f && rigidbody.gameObject.CompareTag("Player"))
         {
             _tranform._isStop = true;
             _animator.SetTrigger("IsDead");
+
+            Destroy(gameObject.GetComponent<Collider2D>());
+            Destroy(_slime);
             Invoke(nameof(DestroySlime), 3f);
+
+            GameManager.Score += 500;
+            _display.UpdateScore(GameManager.Score);
+
             return true;
         }
         else
